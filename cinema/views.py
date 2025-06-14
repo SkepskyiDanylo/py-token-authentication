@@ -151,7 +151,8 @@ class OrderViewSet(mixins.ListModelMixin,
 
     def get_queryset(self):
         queryset = Order.objects.prefetch_related(
-            "tickets__movie_session__movie", "tickets__movie_session__cinema_hall"
+            "tickets__movie_session__movie",
+            "tickets__movie_session__cinema_hall"
         )
         return queryset.filter(user=self.request.user)
 
